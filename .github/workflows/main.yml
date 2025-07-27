@@ -1,0 +1,36 @@
+# .github/workflows/daily_url_access.yml
+
+name: Daily ROUSI Access
+
+on:
+  schedule:
+    # 每天 UTC 时间 00:00 运行
+    # 你可以根据需要调整时间，例如：
+    # - '0 0 * * *'  每天午夜 UTC 时间
+    # - '30 1 * * *' 每天 UTC 时间 01:30
+    # 关于 cron 表达式的更多信息，可以参考：https://crontab.guru/
+    - cron: '0 0 * * *'
+
+jobs:
+  access_url:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Access the URL
+      run: |
+        # 使用 curl 命令访问你的 URL
+        # 替换下面的 YOUR_URL_HERE 为你想要访问的实际 URL
+        curl 'https://rousi.zip/attendance.php' \
+-X 'GET' \
+-H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
+-H 'Sec-Fetch-Site: same-origin' \
+-H 'Cookie: ${{ secrets.MY_ROUSI_SECRET }}' \
+-H 'Sec-Fetch-Dest: document' \
+-H 'Accept-Language: zh-CN,zh-Hans;q=0.9' \
+-H 'Sec-Fetch-Mode: navigate' \
+-H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15' \
+-H 'Accept-Encoding: gzip, deflate, br' \
+-H 'Referer: https://rousi.zip/viewrequests.php?action=view&id=257' \
+-H 'Priority: u=0, i'
+        # 如果需要，你也可以添加其他参数，例如：
+        # curl -X GET "https://api.example.com/data" -H "Authorization: Bearer YOUR_TOKEN"
