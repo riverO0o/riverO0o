@@ -21,16 +21,16 @@ jobs:
         # 使用 curl 命令访问你的 URL
         # 替换下面的 YOUR_URL_HERE 为你想要访问的实际 URL
         curl 'https://rousi.zip/attendance.php' \
--X 'GET' \
--H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
--H 'Sec-Fetch-Site: same-origin' \
--H 'Cookie: ${{ secrets.MY_ROUSI_SECRET }}' \
--H 'Sec-Fetch-Dest: document' \
--H 'Accept-Language: zh-CN,zh-Hans;q=0.9' \
--H 'Sec-Fetch-Mode: navigate' \
--H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15' \
--H 'Accept-Encoding: gzip, deflate, br' \
--H 'Referer: https://rousi.zip/viewrequests.php?action=view&id=257' \
--H 'Priority: u=0, i'
+          -X 'GET' \
+          -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
+          -H 'Sec-Fetch-Site: same-origin' \
+          -H 'Cookie: ${{ secrets.MY_ROUSI_SECRET }}' \
+          -H 'Sec-Fetch-Dest: document' \
+          -H 'Accept-Language: zh-CN,zh-Hans;q=0.9' \
+          -H 'Sec-Fetch-Mode: navigate' \
+          -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15' \
+          -H 'Accept-Encoding: gzip, deflate, br' \
+          -H 'Referer: https://rousi.zip/' \
+          -H 'Priority: u=0, i'
         # 如果需要，你也可以添加其他参数，例如：
         # curl -X GET "https://api.example.com/data" -H "Authorization: Bearer YOUR_TOKEN"
