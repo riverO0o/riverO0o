@@ -19,7 +19,7 @@ jobs:
         pup --version
     - name: Access the URL
       run: |
-        RESPONSE_FILE="response.json" # 定义一个文件名
+        RESPONSE_FILE="response.html" # 定义一个文件名
         echo "Accessing and saving response ..."
         curl -s -o $RESPONSE_FILE 'https://rousi.zip/attendance.php' \
           -X 'GET' \
