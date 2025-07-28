@@ -10,6 +10,10 @@ jobs:
   access_url:
     runs-on: ubuntu-latest
     steps:
+    - name: Install jq
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y jq
     - name: Access the URL
       run: |
         RESPONSE_FILE="response.json" # 定义一个文件名
