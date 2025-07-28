@@ -10,7 +10,7 @@ on:
     # - '30 1 * * *' 每天 UTC 时间 01:30
     # 关于 cron 表达式的更多信息，可以参考：https://crontab.guru/
     - cron: '0 0 * * *'
-
+  workflow_dispatch: # 添加这一行，允许手动触发
 jobs:
   access_url:
     runs-on: ubuntu-latest
