@@ -10,10 +10,11 @@ jobs:
   access_url:
     runs-on: ubuntu-latest
     steps:
-    - name: Install jq
+    - name: Install pup
       run: |
         sudo apt-get update
-        sudo apt-get install -y jq
+        sudo snap install pup --classic
+        
     - name: Access the URL
       run: |
         RESPONSE_FILE="response.json" # 定义一个文件名
@@ -30,4 +31,12 @@ jobs:
           -H 'Accept-Encoding: gzip, deflate, br' \
           -H 'Referer: https://rousi.zip/' \
           -H 'Priority: u=0, i'
-        cat $RESPONSE_FILE | jq .
+        
+        EXTRACTED_CONTENT=$(cat "$RESPONSE_FILE" | pup '#info_block > tbody > tr > td > table > tbody > tr > td:nth-child(1) > span > a:nth-child(7) text{}')
+        
+        if [ -z "$EXTRACTED_CONTENT" ]; then
+          echo "Warning: No content found for the specified CSS selector."
+        else
+          echo "Successfully extracted content:"
+          echo "$EXTRACTED_CONTENT"
+        fi
