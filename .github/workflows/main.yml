@@ -12,9 +12,11 @@ jobs:
     steps:
     - name: Install pup
       run: |
-        sudo apt-get update
-        sudo snap install pup --classic
-        
+        PUP_VERSION="v0.4.0" # Specify the desired version
+        curl -Lo pup.zip "https://github.com/ericchiang/pup/releases/download/${PUP_VERSION}/pup_${PUP_VERSION}_linux_amd64.zip"
+        unzip pup.zip -d /usr/local/bin
+        rm pup.zip
+        pup --version
     - name: Access the URL
       run: |
         RESPONSE_FILE="response.json" # 定义一个文件名
