@@ -4,23 +4,17 @@ name: Daily ROUSI Access
 
 on:
   schedule:
-    # 每天 UTC 时间 00:00 运行
-    # 你可以根据需要调整时间，例如：
-    # - '0 0 * * *'  每天午夜 UTC 时间
-    # - '30 1 * * *' 每天 UTC 时间 01:30
-    # 关于 cron 表达式的更多信息，可以参考：https://crontab.guru/
     - cron: '0 0 * * *'
   workflow_dispatch: # 添加这一行，允许手动触发
 jobs:
   access_url:
     runs-on: ubuntu-latest
-
     steps:
     - name: Access the URL
       run: |
-        # 使用 curl 命令访问你的 URL
-        # 替换下面的 YOUR_URL_HERE 为你想要访问的实际 URL
-        curl 'https://rousi.zip/attendance.php' \
+        RESPONSE_FILE="response.json" # 定义一个文件名
+        echo "Accessing and saving response ..."
+        curl -s -o $RESPONSE_FILE 'https://rousi.zip/attendance.php' \
           -X 'GET' \
           -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
           -H 'Sec-Fetch-Site: same-origin' \
@@ -32,5 +26,4 @@ jobs:
           -H 'Accept-Encoding: gzip, deflate, br' \
           -H 'Referer: https://rousi.zip/' \
           -H 'Priority: u=0, i'
-        # 如果需要，你也可以添加其他参数，例如：
-        # curl -X GET "https://api.example.com/data" -H "Authorization: Bearer YOUR_TOKEN"
+        cat $RESPONSE_FILE | jq .
