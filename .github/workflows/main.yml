@@ -35,7 +35,7 @@ jobs:
           -H 'Referer: https://rousi.zip/' \
           -H 'Priority: u=0, i'
         echo "-------------"
-        head -20 $RESPONSE_FILE
+        head -n 20 $RESPONSE_FILE
         #EXTRACTED_CONTENT=$(cat "$RESPONSE_FILE" | pup '#info_block > tbody > tr > td > table > tbody > tr > td:nth-child(1) > span > a:nth-child(7) text{}')
            
         # echo "$EXTRACTED_CONTENT"
