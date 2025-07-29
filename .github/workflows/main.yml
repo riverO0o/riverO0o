@@ -22,7 +22,7 @@ jobs:
         pup --version
         RESPONSE_FILE="response.html" 
         echo "Accessing and saving response ..."
-        curl -s -o $RESPONSE_FILE 'https://rousi.zip/attendance.php' \
+        curl -s -o "$RESPONSE_FILE" 'https://rousi.zip/attendance.php' \
           -X 'GET' \
           -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
           -H 'Sec-Fetch-Site: same-origin' \
