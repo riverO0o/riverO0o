@@ -22,7 +22,7 @@ jobs:
         pup --version
         RESPONSE_FILE="response.html" 
         echo "Accessing and saving response ..."
-        curl  -o "$RESPONSE_FILE" 'https://rousi.zip/attendance.php' \
+        curl  'https://rousi.zip/attendance.php' \
           -X 'GET' \
           -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
           -H 'Sec-Fetch-Site: same-origin' \
@@ -35,7 +35,7 @@ jobs:
           -H 'Referer: https://rousi.zip/' \
           -H 'Priority: u=0, i'
         echo "-------------"
-        cat "$RESPONSE_FILE"
+        
         #EXTRACTED_CONTENT=$(cat "$RESPONSE_FILE" | pup '#info_block > tbody > tr > td > table > tbody > tr > td:nth-child(1) > span > a:nth-child(7) text{}')
            
         # echo "$EXTRACTED_CONTENT"
