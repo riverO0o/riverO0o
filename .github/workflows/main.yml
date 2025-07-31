@@ -13,8 +13,8 @@ jobs:
     
     - name: Access the URL
       run: |
-        pup --version
-        RESPONSE_FILE="response.html" 
+        
+        
         echo "Accessing and saving response ..."
         curl -o response.html 'https://rousi.zip/attendance.php' \
           -X 'GET' \
@@ -27,9 +27,9 @@ jobs:
           -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15' \
           -H 'Accept-Encoding: gzip, deflate, br' \
           -H 'Referer: https://rousi.zip/' \
-          -H 'Priority: u=0, i'
+          -H 'Priority: u=0, i' | tee
         echo "-------------"
-        cat response.html
+        
         #EXTRACTED_CONTENT=$(cat "$RESPONSE_FILE" | pup '#info_block > tbody > tr > td > table > tbody > tr > td:nth-child(1) > span > a:nth-child(7) text{}')
            
         # echo "$EXTRACTED_CONTENT"
