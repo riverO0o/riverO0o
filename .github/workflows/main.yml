@@ -20,7 +20,7 @@ jobs:
           -X 'GET' \
           -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
           -H 'Sec-Fetch-Site: same-origin' \
-          -H 'Cookie: ${{ secrets.MY_ROUSI_SECRET }}' \
+          -H "Cookie: ${{ secrets.MY_ROUSI_SECRET }}" \
           -H 'Sec-Fetch-Dest: document' \
           -H 'Accept-Language: zh-CN,zh-Hans;q=0.9' \
           -H 'Sec-Fetch-Mode: navigate' \
